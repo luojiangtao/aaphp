@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>csrf</title>
+</head>
+<body>
+    <form action="" method="POST" style="border: 2px solid #00ffff;width: 500px">
+        <p>我有隐藏input，name="_token_" ，能通过token验证" </p>
+        <input type="hidden" name="_token_" value="{:aaphp\Validate::token()}"/>
+        <input type="text" name="username" value="aaphp"/>
+        <br/>
+        <br/>
+        <input type="text" name="password" value="123456"/>
+        <br/>
+        <br/>
+        <input type="submit" value="提交">
+    </form>
+
+    <hr>
+
+    <form action="" method="POST" style="border: 2px solid #ff0000;width: 500px">
+        <p>我没有隐藏input，不能通过token验证" </p>
+        <input type="text" name="username" value="aaphp"/>
+        <br/>
+        <br/>
+        <input type="text" name="password" value="123456"/>
+        <br/>
+        <br/>
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

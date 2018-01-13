@@ -1,0 +1,17 @@
+{
+    "name": "luojiangtao/blog",
+    "description": "aaphp php framework",
+    "keywords": ["aaphp", "framework", "php", "luojiangtao"],
+    "homepage": "http://www.aaphp.net/",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "luojiangtao",
+            "email": "1368761119@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+    }
+}

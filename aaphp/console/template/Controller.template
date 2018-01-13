@@ -1,0 +1,26 @@
+<?php
+namespace application\example\controller;
+use aaphp\Controller;
+/**
+ * 首页，文章控制器
+ * @Author   罗江涛
+ * @DateTime 2016-08-18T16:09:56+0800
+ */
+class ControllerController extends Controller
+{
+    public function index()
+    {
+        return 'index<br/>';
+    }
+
+    /**
+     * 测试用
+     * http://localhost/blog/index.php/example/RequestExample/name
+     * @Author   罗江涛
+     * @DateTime 2016-08-18T16:32:04+0800
+     */
+    public function _initialize()
+    {
+        echo '_initialize<br/>';
+    }
+}

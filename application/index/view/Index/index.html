@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h3>控制器</h3>
+<ul>
+    <li>
+        <a href="{:aaphp\Url::build('example/ControllerController/index')}" target="_blank">控制器方法</a>
+    </li>
+</ul>
+
+<h3>视图</h3>
+<ul>
+    <li>
+        <a href="{:aaphp\Url::build('example/ViewController/fetchExample')}" target="_blank">获取视图</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ViewController/assignExample')}" target="_blank">分配参数到视图</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ViewController/includeExample')}" target="_blank">引入头部和底部</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ViewController/tagExample')}" target="_blank">模版标签使用</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ViewController/jsonExample')}" target="_blank">输出json</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ViewController/openXssFilter')}" target="_blank">xss 过滤</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ViewController/closeXssFilter')}" target="_blank">关闭 xss 过滤</a>
+    </li>
+</ul>
+
+<h3>模型</h3>
+<ul>
+    <li>
+        <a href="{:aaphp\Url::build('example/ModelController/insert')}" target="_blank">插入</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ModelController/update')}" target="_blank">更新</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ModelController/select')}" target="_blank">查询</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ModelController/count')}" target="_blank">统计条数</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ModelController/avg')}" target="_blank">求平均数</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ModelController/max')}" target="_blank">求最大值</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ModelController/min')}" target="_blank">求最小值</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ModelController/setField')}" target="_blank">修改单个字段</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ModelController/getField')}" target="_blank">获取单个字段</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ModelController/increase')}" target="_blank">字段数字增加</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ModelController/decrease')}" target="_blank">字段数字减少</a>
+    </li>
+</ul>
+
+<h3>数据库</h3>
+<ul>
+    <li>
+        <a href="{:aaphp\Url::build('example/DatabaseController/insert')}" target="_blank">插入</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/DatabaseController/select')}" target="_blank">查询</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/DatabaseController/update')}" target="_blank">更新</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/DatabaseController/delete')}" target="_blank">删除</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/DatabaseController/bindParam')}" target="_blank">绑定参数，预处理，防止sql注入</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/DatabaseController/transaction')}" target="_blank">事务处理</a>
+    </li>
+</ul>
+
+<h3>配置</h3>
+<ul>
+    <li>
+        <a href="{:aaphp\Url::build('example/ConfigController/common')}" target="_blank">公共配置文件操作</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ConfigController/database')}" target="_blank">数据库配置文件操作</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ConfigController/param')}" target="_blank">自定义配置文件操作</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ConfigController/router')}" target="_blank">路由配置文件操作</a>
+    </li>
+</ul>
+
+<h3>请求</h3>
+<ul>
+    <li>
+        <a href="{:aaphp\Url::build('example/RequestController/name')}" target="_blank">获取请求相关名称</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/RequestController/param')}" target="_blank">获取请求相关参数</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/RequestController/requestParam',['name'=>'lucy','age'=>18])}" target="_blank">获取请求传参</a>
+    </li>
+</ul>
+
+
+<h3>路由</h3>
+<ul>
+    <li>
+        <a href="__ROOT__/index.php/router.html" target="_blank">简单路由</a>
+    </li>
+    <li>
+        <a href="__ROOT__/index.php/get/8.html" target="_blank">正则路由</a>
+    </li>
+</ul>
+
+<h3>URL</h3>
+<ul>
+    <li>
+        <a href="{:aaphp\Url::build('example/UrlController/index')}" target="_blank">生成url</a>
+    </li>
+</ul>
+
+<h3>数据验证</h3>
+<ul>
+    <li>
+        <a href="{:aaphp\Url::build('example/ValidateController/check')}" target="_blank">数据验证</a>
+    </li>
+    <li>
+        <a href="{:aaphp\Url::build('example/ValidateController/csrf')}" target="_blank">csrf 跨区表单token验证</a>
+    </li>
+</ul>
+
+</body>
+</html>

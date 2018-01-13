@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+//use aaphp\AA;
+//define("DEBUG", false);
+//require_once (__DIR__.'/aaphp/AA.php');
+//require_once (__DIR__.'/aaphp/AutoLoad.php');
+//aaphp\AutoLoad::autoRegister();
+
+//require_once("./aaphp/console/Console.php");
+//$console=new Console();
+//$console->start();
+//AA::start();
+
+
+    use aaphp\AA;
+	// 调试模式开启
+	// define("DEBUG", false);
+	define("DEBUG", true);
+	// 引入框架入口文件
+	require_once("./aaphp/AA.php");
+//	执行框架入口
+//    new \aaphp\AA();
+//    \aaphp\AA::AA();
+    AA::start();

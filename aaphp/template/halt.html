@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>错误</title>
+</head>
+<body>
+	<h1>:(</h1>
+	<h1>
+		<?php echo $error['message']?>
+	</h1>
+	<?php if(DEBUG && isset($error['file'])): ?>
+		<p><?php echo $error['file'] . ' Line:' . $error['line'] ?></p>
+	<?php endif ?>
+
+	<?php if(isset($error['trace'])): ?>
+		<p><?php echo nl2br($error['trace']) ?></p>
+	<?php endif ?>
+</body>
+</html>

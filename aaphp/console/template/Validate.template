@@ -1,0 +1,79 @@
+<?php
+namespace application\example\validate;
+use aaphp\Validate;
+
+
+class UserValidate extends Validate
+{
+    protected $rule = [
+        'username'  =>  [
+//            不能为空
+            'require',
+//            长度必须大于25
+            'max'=>25,
+//            长度必须小于2
+            'min'=>2,
+//            长度必须 在 5-10 之间
+            'length'=>[5,10],
+        ],
+        'email' =>  [
+//            必须是邮箱格式
+            'email'
+        ],
+        'password' =>  [
+            'confirm'=>'repassword',
+            'different'=>'username',
+            'regex'=>'/^\d{6}$/',
+        ],
+        'age' =>  [
+            'integer',
+            'number',
+            'between'=>[18,28],
+            'notBetween'=>[30,50],
+            'in'=>[18,19,20,21,22],
+            'notIn'=>[28,29,30,31,32],
+            '='=>18,
+            '>'=>18,
+            '<'=>18,
+            '>='=>18,
+            '<='=>18,
+        ],
+        'money' =>  [
+            'float'
+        ],
+        'birthday' =>  [
+            'date'
+        ],
+        'blog' =>  [
+            'url'
+        ],
+        'blogIp' =>  [
+            'ip',
+        ],
+//        'token' =>  [
+//            'token',
+//        ],
+    ];
+
+//    用户自定义错误信息
+    protected $message  =   [
+        'username' => [
+            'require'=>'名称不能为空',
+            'max'=>'名称最多不能超过25个字符',
+            'min'=>'名称最少不能小于2个字符',
+            'length'=>'名称最长度范围：5-10',
+        ],
+        'age' => [
+            'integer'=>'年龄必须是数字1',
+            'between'=>'年龄只能在1-120之间1',
+        ],
+        'email' => [
+            'email'=>'邮箱格式错误',
+        ],
+        'password' => [
+            'confirm'=>'密码和确认密码不一致',
+            'different'=>'用户名和密码不能相等',
+            'regex'=>'密码不符合要求',
+        ],
+    ];
+}

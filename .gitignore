@@ -1,0 +1,6 @@
+#upload/*
+runtime/*
+#vender/*
+
+# phpstorm project files
+.idea
