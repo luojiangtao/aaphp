@@ -82,7 +82,7 @@ class ViewController extends Controller
      * xss 过滤
      * @return string
      */
-    public function openXssFilter()
+    public function xss()
     {
         // 开启 xss 过滤，默认开启
         Config::common('xss_filter',true);
@@ -98,8 +98,8 @@ class ViewController extends Controller
      */
     public function closeXssFilter()
     {
+//        关闭xss过滤
         Config::common('xss_filter',false);
-        var_dump(Config::common('xss_filter'));
         $xss = "<script>alert('XSS')</script>";
         $this->assign('xss', $xss);
         return $this->fetch();

@@ -56,16 +56,16 @@ final class Config
 
     /**
      * 配置信息的读取或修改
-     * @param $type [配置文件名称（不包含后缀名）例子：Config::common('default_moduel');]
+     * @param $type [配置文件名称（不包含后缀名）例子：Config::common('default_module');]
      * @param string $key [配置文件的键名]
      * @param string $value [配置文件的值]
      * @return array|string [配置文件信息]
      */
-    public function config($type, $key = '', $value = '')
+    public function config($type, $key = null, $value = null)
     {
-        if ('' === $key) {// 什么都不传，则返回所有配置项信息
+        if (is_null($key)) {// 什么都不传，则返回所有配置项信息
             return self::$config[$type];
-        } else if ('' !== $key && '' == $value) {// 只传了$key，则返回对应value
+        } else if (!is_null($key) && is_null($value)) {// 只传了$key，则返回对应value
             if (isset(self::$config[$type][$key])) {
                 return self::$config[$type][$key];
             } else {
@@ -77,7 +77,7 @@ final class Config
     }
 
     /**
-     * 使方法可以被静态调用 例子：Config::common('default_moduel');
+     * 使方法可以被静态调用 例子：Config::common('default_module');
      * @param string $function [需要调用的方法]
      * @param array $arguments [参数数组]
      * @return mixed|string [配置文件信息]

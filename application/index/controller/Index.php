@@ -24,6 +24,11 @@ class Index extends Controller
         return $this->fetch();
     }
 
+    public function test()
+    {
+        echo 1;
+    }
+
     /**
      * 空方法 没有找到方法时执行
      */
