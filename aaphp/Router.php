@@ -48,8 +48,8 @@ class Router
 
     /**
      * 去掉伪静态 .php .html .htm
-     * @param string [$path_info [url里的pathinfo值]]
-     * @return string [去掉后缀的url里的pathinfo值]
+     * @param string [$path_info [url里的pathInfo值]]
+     * @return string [去掉后缀的url里的pathInfo值]
      */
     private function deleteSuffix($pathInfo)
     {
@@ -61,8 +61,8 @@ class Router
     }
 
     /**
-     * 解析url里的pathinfo值
-     * @return string [解析后的url里的pathinfo值]
+     * 解析url里的pathInfo值
+     * @return string [解析后的url里的pathInfo值]
      */
     private function parsePathInfo()
     {
@@ -79,12 +79,34 @@ class Router
             $pathInfo = empty($_SERVER['PATH_INFO']) ? '' : ltrim($_SERVER['PATH_INFO'], '/');
         }
 
+        if (!$pathInfo) {
+            $pathInfo = self::createPathInfo();
+        }
+
+        return $pathInfo;
+    }
+
+    /**
+     * pathInfo 为空的情况下，通过REQUEST_URI和SCRIPT_NAME生成
+     * @return string [通过REQUEST_URI和SCRIPT_NAME生成的 pathInfo]
+     */
+    private function createPathInfo()
+    {
+        if (!isset($_SERVER['REQUEST_URI']) || !isset($_SERVER['SCRIPT_NAME'])) {
+            return '';
+        }
+//        去掉index.php
+        $scriptName = str_replace('/index.php','',$_SERVER['SCRIPT_NAME']);
+        $pathInfo = str_replace($scriptName,'',$_SERVER['REQUEST_URI']);
+//        去掉 ?p=1 方式的get传参
+        $pathInfo       = preg_replace("/\?.*/i", '', $pathInfo);
+        $pathInfo = ltrim($pathInfo, '/');
         return $pathInfo;
     }
 
     /**
      * 读取用户路由配置，转化为真实的pathInfo
-     * @param $pathInfo [url里的pathinfo值]
+     * @param $pathInfo [url里的pathInfo值]
      * @return mixed|null|string|string[] []
      */
     private function transformation($pathInfo)

@@ -197,7 +197,8 @@ class Validate
                 break;
             case 'token':
 //                csrf验证
-                $result = $validateValue == $_SESSION[$field];
+                $token = isset($_SESSION[$field]) ? $_SESSION[$field] : null;
+                $result = $validateValue === $token;
                 unset($_SESSION[$field]);
                 break;
             case 'regex':

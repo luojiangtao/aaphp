@@ -204,7 +204,7 @@ class Request
         if ($key && !isset($this->post[$key])) {
             return $default;
         }
-        return $this->post;
+        return $this->request;
     }
 
     /**

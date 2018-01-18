@@ -185,7 +185,6 @@ final class Application
     {
         $sessionAutoStart = Config::common('session_auto_start');
         $defaultTimeZone = Config::common('default_time_zone');
-//        var_dump($defaultTimeZone);die;
         // 设置时区
         date_default_timezone_set($defaultTimeZone);
         // 是否开启session
