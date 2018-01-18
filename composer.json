@@ -1,6 +1,6 @@
 {
     "name": "luojiangtao/aaphp",
-    "description": "aaphp php framework",
+    "description": "php framework",
     "keywords": ["aaphp", "framework", "php", "luojiangtao"],
     "homepage": "http://www.aaphp.net/",
     "type": "project",
@@ -11,6 +11,6 @@
             "email": "1368761119@qq.com"
         }
     ],
-    "require": {
-    }
+    "minimum-stability": "stable",
+    "require": {}
 }
