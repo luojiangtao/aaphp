@@ -61,12 +61,11 @@ final class Config
      * @param string $value [配置文件的值]
      * @return array|string [配置文件信息]
      */
-    public function config($type, $key = '', $value = '')
+    public function config($type, $key = null, $value = null)
     {
-
-        if ('' == $key) {// 什么都不传，则返回所有配置项信息
+        if (is_null($key)) {// 什么都不传，则返回所有配置项信息
             return self::$config[$type];
-        } else if ('' != $key && '' == $value) {// 只传了$key，则返回对应value
+        } else if (!is_null($key) && is_null($value)) {// 只传了$key，则返回对应value
             if (isset(self::$config[$type][$key])) {
                 return self::$config[$type][$key];
             } else {

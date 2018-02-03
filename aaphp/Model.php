@@ -38,7 +38,6 @@ class Model extends Database
     public function select()
     {
         $sql = 'SELECT ' . $this->condition['field'] . ' FROM ' . $this->table . $this->condition['where'] . $this->condition['group'] . $this->condition['having'] . $this->condition['order'] . $this->condition['limit'];
-        $this->sqls[] = $sql;
         return $this->execute($sql, $this->param);
     }
 
@@ -286,7 +285,6 @@ class Model extends Database
         }
         // 组装sql语句
         $sql = 'DELETE FROM ' . $this->table . $this->condition['where'];
-        $this->sqls[] = $sql;
         return $this->execute($sql, $this->param);;
     }
 
@@ -317,8 +315,6 @@ class Model extends Database
 
 //        拼接sql语句，最后执行例子：$result=$database->execute("select * from aa_user where user_id>:user_id and user_name!=:user_name",['user_id'=>5,'user_name'=>'aaphp']);
         $sql = 'INSERT INTO ' . $this->table . ' (' . $fields . ') VALUES (' . $values . ')';
-//        保存执行过的sql
-        $this->sqls[] = $sql;
 //        执行
         $this->execute($sql, $this->param);
         $lastInsertId = $this->pdo->lastInsertId();
@@ -332,7 +328,6 @@ class Model extends Database
     public function count()
     {
         $sql = 'SELECT COUNT(*) AS count FROM ' . $this->table . $this->condition['where'] . $this->condition['group'] . $this->condition['having'];
-        $this->sqls[] = $sql;
         // 执行sql语句
         $count = $this->execute($sql, $this->param);
         $count = $count[0]['count'];
@@ -347,7 +342,6 @@ class Model extends Database
     public function avg($filed)
     {
         $sql = 'SELECT AVG(' . $filed . ') AS avg FROM ' . $this->table . $this->condition['where'] . $this->condition['group'] . $this->condition['having'];
-        $this->sqls[] = $sql;
         // 执行sql语句
         $avg = $this->execute($sql, $this->param);
         return $avg;
@@ -361,7 +355,6 @@ class Model extends Database
     public function max($filed)
     {
         $sql = 'SELECT MAX(' . $filed . ') AS max FROM ' . $this->table . $this->condition['where'];
-        $this->sqls[] = $sql;
         // 执行sql语句
         $max = $this->execute($sql, $this->param);
         return $max;
@@ -375,7 +368,6 @@ class Model extends Database
     public function min($filed)
     {
         $sql = 'SELECT MIN(' . $filed . ') AS min FROM ' . $this->table . $this->condition['where'];
-        $this->sqls[] = $sql;
         // 执行sql语句
         $min = $this->execute($sql, $this->param);
         return $min;

@@ -50,7 +50,7 @@ class DatabaseController extends Controller
      */
     public function update()
     {
-        $sql = "update aa_user set username='lucy' where id>10";
+        $sql = "update aa_user set user_name='lucy' where user_id>10";
         $database = new Database();
 //        执行
         $result = $database->execute($sql);
@@ -64,7 +64,7 @@ class DatabaseController extends Controller
      */
     public function delete()
     {
-        $sql = "delete from aa_user where id>11";
+        $sql = "delete from aa_user where user_id>11";
         $database = new Database();
 //        执行
         $result = $database->execute($sql);
@@ -80,8 +80,8 @@ class DatabaseController extends Controller
     {
         $database = new Database();
 //        需要绑定的参数
-        $param = ['user_id' => 5, 'username' => 'aaphp'];
-        $result = $database->execute("select * from aa_user where id>:user_id and username!=:username", $param);
+        $param = ['user_id' => 5, 'user_name' => 'aaphp'];
+        $result = $database->execute("select * from aa_user where user_id>:user_id and user_name!=:user_name", $param);
         var_dump($result);
     }
 

@@ -5,7 +5,6 @@ namespace application\example\controller;
 use aaphp\Controller;
 use aaphp\Url;
 
-
 /**
  * url地址生成例子
  * Class UrlController

@@ -27,6 +27,9 @@ class Index extends Controller
     public function test()
     {
         echo 1;
+        $const = get_defined_constants(true);
+        echo "<pre>";
+        print_r($const['user']);
     }
 
     /**

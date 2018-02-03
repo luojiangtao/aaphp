@@ -38,12 +38,9 @@ class RequestController extends Controller
         $request = Request::instance();
         echo '请求方法：' . $request->getMethod() . '<br/>';
         echo '访问ip地址：' . $request->getIp() . '<br/>';
-        echo '是否AJax请求：';
-        var_dump($request->isAjax());
-        echo '是否isPost请求：';
-        var_dump($request->isPost());
-        echo '是否isGet请求：';
-        var_dump($request->isGet());
+        echo '是否AJax请求：' . $request->isAjax() . '<br/>';
+        echo '是否isPost请求：' . $request->isPost() . '<br/>';
+        echo '是否isGet请求：' . $request->isGet() . '<br/>';
     }
 
     /**
@@ -54,14 +51,14 @@ class RequestController extends Controller
         $request = Request::instance();
         echo '请求参数：';
         var_dump($request->request());
-        echo '获取单个请求参数age：' . $request->request('age') . '<br/>';
+        echo '获取单个请求参数age：' . $request->request('age');
 
         echo '获取post全部请求参数：';
         var_dump($request->post());
-        echo '获取post单个请求参数age：' . $request->post('age') . '<br/>';
+        echo '获取单个请求参数age：' . $request->post('age');
 
         echo '获取get全部请求参数：';
         var_dump($request->get());
-        echo '获取get单个请求参数age：' . $request->get('age') . '<br/>';
+        echo '获取单个请求参数age：' . $request->get('age');
     }
 }

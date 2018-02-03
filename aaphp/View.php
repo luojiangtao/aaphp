@@ -347,7 +347,6 @@ class View
             $include = empty($match[2]) ? '' : $match[2];
             if (!empty($include)) {
                 $include_file = file_get_contents($include);
-                echo $include_file;
                 // 标签替换
                 $html = preg_replace($preg, $include_file, $html, 1);
             }

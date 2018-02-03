@@ -1,6 +1,7 @@
 <?php
+
 namespace application\example\model;
-use aaphp\Config;
+
 use aaphp\Model;
 
 /**

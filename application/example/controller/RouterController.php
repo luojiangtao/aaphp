@@ -21,7 +21,7 @@ class RouterController extends Controller
      */
     public function index()
     {
-        echo '经过路由处理后的页面，路由配置：' . Config::router('router').'<br/>';
+        echo '我是经过路由处理后的页面，我配置的路由是：' . Config::router('router');
     }
 
     /**
@@ -31,8 +31,9 @@ class RouterController extends Controller
      */
     public function get()
     {
-        echo '经过正则路由处理后的页面，路由配置：' . Config::router('/^get\/(\d+?)$/').'<br/>';
+        echo '我是经过路由处理后的页面，我配置的路由是：' . Config::router('get');
         $id = Request::instance()->request('id');
         echo '路由映射传入的$_GET参数id:' . $id;
     }
+
 }

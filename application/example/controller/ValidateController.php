@@ -38,6 +38,7 @@ class ValidateController extends Controller
             echo '验证未通过，错误信息：<br/>';
             var_dump($validate->getError());
         }
+        var_dump($_SERVER);
     }
 
     /**
@@ -66,4 +67,5 @@ class ValidateController extends Controller
             var_dump($validate->getError());
         }
     }
+
 }

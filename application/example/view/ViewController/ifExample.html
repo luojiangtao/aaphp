@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fetch</title>
+</head>
+<body>
+    <h2>I am __ROOT__/application/example/view/ViewExample/ifExample.html</h2>
+    <if condition="isset($_GET['id']) && $id==1">
+        接收到id并且id=1
+        <elseif condition="isset($_GET['id']) && $id==2"/>
+        接收到id并且id=2
+        <else/>
+        没有接收到id
+    </if>
+</body>
+</html>

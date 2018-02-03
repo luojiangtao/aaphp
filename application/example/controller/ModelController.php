@@ -21,8 +21,8 @@ class ModelController extends Controller
         $data = ['username' => 'aaphp', 'password' => '123456', 'age' => 18];
         $model = new User();
 //        $model= new Model('user');//等价于上面
-        $categoryId = $model->insert($data);
-        echo '自增id：' . $categoryId . '<br/>';
+        $id = $model->insert($data);
+        echo '自增id：' . $id . '<br/>';
     }
 
     /**
@@ -32,9 +32,9 @@ class ModelController extends Controller
     {
         $data = ['username' => 'mysql', 'password' => '654321', 'age' => 20];
         $model = new User();
-        $result = $model->where(['id', '=', 1])->update($data);
+        $rowCount = $model->where(['id', '=', 1])->update($data);
         var_dump($model->getSql());
-        echo '更新影响行数：' . $result . '<br/>';
+        echo '更新影响行数：' . $rowCount . '<br/>';
     }
 
     /**
@@ -43,12 +43,52 @@ class ModelController extends Controller
     public function select()
     {
         $model = new User();
+        $result = $model->select();
+        echo '查询所有用户：<br/>';
+        var_dump($result);
+    }
 
+    /**
+     * 查询结果条数限制
+     */
+    public function limit()
+    {
+        $model = new User();
+        $result = $model
+            ->limit(10)
+//            执行查询
+            ->select();
+        echo "查询不超过10条：<br/>";
+        var_dump($result);
+    }
+
+    /**
+     * 查询字段
+     */
+    public function field()
+    {
+        $model = new User();
+        $result = $model
+//            只查询 'id','username','age','city' 字段
+            ->field(['id', 'username', 'age', 'city'])
+//            执行查询
+            ->select();
+        echo "只查询 'id','username','age','city' 字段：<br/>";
+        var_dump($result);
+    }
+
+    /**
+     * 条件查询
+     */
+    public function where()
+    {
+        $model = new User();
         $result = $model->where(['id', '=', 1])->select();
         echo '查询id=1的用户：<br/>';
         var_dump($result);
 
         $model = new User();
+//        注意，是二维数组 and 查询
         $where = [
 //            id在[1,2,3,4,5,6,7,8,9,10]内
             ['id', 'in', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]],
@@ -79,19 +119,29 @@ class ModelController extends Controller
 //            id<10
             ['id', '<', 10],
         ];
-
         $result = $model
-//            只查询 'id','username','age','city' 字段
-            ->field(['id', 'username', 'age', 'city'])
 //            查询条件
             ->where($where)
-//            id 降序排序
-            ->order('id DESC')
-//            只查10条
-            ->limit(10)
 //            执行查询
             ->select();
-        echo "查询id>1 并且 id<10 并且  username 不等于 'aaphp8' 的用户的 id，username字段，按id降序排序，不超过3条：<br/>";
+        echo "多条件查询：<br/>";
+        var_dump($result);
+    }
+
+    /**
+     * 排序
+     */
+    public function order()
+    {
+        $model = new User();
+        $result = $model
+//            id 降序排序
+            ->order('id DESC')
+//            id 增序排序
+//            ->order('id ASC')
+//            执行查询
+            ->select();
+        echo "按id降序排序：<br/>";
         var_dump($result);
     }
 
@@ -101,8 +151,19 @@ class ModelController extends Controller
     public function delete()
     {
         $model = new User();
-        $result = $model->where(['id', '>', 35])->delete();
+        $rowCount = $model->where(['id', '>', 35])->delete();
         echo "删除id大于35的用户：<br/>";
+        var_dump($rowCount);
+    }
+
+    /**
+     * 分组
+     */
+    public function group()
+    {
+        $model = new User();
+        $result = $model->group('age')->select();
+        echo "查询用户，按年龄分组：<br/>";
         var_dump($result);
     }
 
@@ -205,8 +266,48 @@ class ModelController extends Controller
         $result = $model->where(['id', '=', 10])->decrease('age');
         echo "将id等于10的用户年龄减1：<br/>";
         var_dump($result);
+
         $result = $model->where(['id', '=', 10])->decrease('age', 5);
         echo "将id等于10的用户年龄减5：<br/>";
         var_dump($result);
+    }
+
+    /**
+     * 链式操作
+     */
+    public function chain()
+    {
+        $model = new User();
+        $result = $model->where(['id', '<', 10])->field(['id', 'username', 'age', 'city'])->order('id DESC')->limit(5)->select();
+        echo "查询id<10的用户的'id', 'username', 'age', 'city',按id降序排序，最多5条：<br/>";
+        var_dump($result);
+    }
+
+    /**
+     * 分页
+     */
+    public function page()
+    {
+        $model = new User();
+//        查询条数
+        $limit = 5;
+//        偏移量
+        $offset = 2;
+        $limit = "{$offset},{$limit}";
+        $result = $model->limit($limit)->select();
+        echo "查询第3-7行：<br/>";
+        var_dump($result);
+    }
+
+    /**
+     * 获取执行过的sql语句
+     */
+    public function getSql()
+    {
+        $model = new User();
+        $model->where(['id', '<', 10])->field(['id', 'username', 'age', 'city'])->order('id DESC')->limit(5)->select();
+        $sqlArray = $model->getSql();
+        echo "获取执行过的sql语句：<br/>";
+        var_dump($sqlArray);
     }
 }

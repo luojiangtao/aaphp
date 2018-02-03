@@ -5,7 +5,9 @@ use aaphp\AA;
 // 调试模式开启
 // define("DEBUG", false);
 define("DEBUG", true);
+// 这个类的路径，为了兼容而替换路径表示方式
+$path = str_replace('\\', '/', __FILE__);
 // 引入框架入口文件
-require_once("./aaphp/AA.php");
+require_once(dirname($path)."/aaphp/AA.php");
 //	执行框架入口
 AA::start();
