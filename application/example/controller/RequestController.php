@@ -38,9 +38,12 @@ class RequestController extends Controller
         $request = Request::instance();
         echo '请求方法：' . $request->getMethod() . '<br/>';
         echo '访问ip地址：' . $request->getIp() . '<br/>';
-        echo '是否AJax请求：' . $request->isAjax() . '<br/>';
-        echo '是否isPost请求：' . $request->isPost() . '<br/>';
-        echo '是否isGet请求：' . $request->isGet() . '<br/>';
+        $isAjax = $request->isAjax() ? 'true' : 'false';
+        echo '是否AJax请求：' . $isAjax . '<br/>';
+        $isPost = $request->isPost() ? 'true' : 'false';
+        echo '是否isPost请求：' . $isPost . '<br/>';
+        $isGet = $request->isGet() ? 'true' : 'false';
+        echo '是否isGet请求：' . $isGet . '<br/>';
     }
 
     /**
@@ -68,19 +71,19 @@ class RequestController extends Controller
     public function json()
     {
         $request = Request::instance();
-        if(!$request->isPost()){
+        if (!$request->isPost()) {
 //            不是post请求，载入视图模版
             return $this->fetch();
         }
 
         $data = [
-            'status'=>1,
-            'message'=>"服务器已接收到json数据",
+            'status' => 1,
+            'message' => "服务器已接收到json数据",
 //            获取全部
-            'data'=>$request->request(),
+            'data' => $request->request(),
 //            只获取age
-            'age'=>$request->request('age'),
-            'time'=>date('Y-m-d H:i:s',time()),
+            'age' => $request->request('age'),
+            'time' => date('Y-m-d H:i:s', time()),
         ];
         return $data;
     }

@@ -6,10 +6,10 @@
 </head>
 <body>
     <h2>I am __ROOT__/application/example/view/ViewExample/ifExample.html</h2>
-    <if condition="isset($_GET['id']) && $id==1">
+    <if condition="isset($_GET['id']) && $_GET['id']==1">
         接收到id并且id=1
-        <elseif condition="isset($_GET['id']) && $id==2"/>
-        接收到id并且id=2
+        <elseif condition="isset($_GET['id'])"/>
+        接收到id，id={$_GET['id']}
         <else/>
         没有接收到id
     </if>
