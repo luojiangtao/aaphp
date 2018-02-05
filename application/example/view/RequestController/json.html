@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<p>发送contentType=application/json的post请求</p>
+<textarea name="" id="jsonString" cols="30" rows="10">
+{
+	"name": "小明",
+	"age": "10",
+	"id_array": [1, 2, 3]
+}
+</textarea>
+<br>
+<button id="sendPost">发送</button>
+<p id="respond"></p>
+<script>
+    $(function(){
+        $("#sendPost").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "{:aaphp\Url::build('example/RequestController/json')}",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify($("#jsonString").val()),
+                dataType: "json",
+                success: function (jsonObject) {
+                    data = JSON.stringify(jsonObject);
+                    $("#respond").html(data);
+                },
+                error: function (jsonObject) {
+                    data = JSON.stringify(jsonObject);
+                    $("#respond").html(data);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -70,7 +70,7 @@ class ViewController extends Controller
     }
 
     /**
-     * 模版标签例子
+     * 循环标签例子
      * 视图文件位置: /application/example/view/ViewController/foreachExample.html
      * @return string
      */
@@ -91,7 +91,7 @@ class ViewController extends Controller
     }
 
     /**
-     * if判断
+     * 判断标签例子
      * 视图文件位置: /application/example/view/ViewController/ifExample.html
      * @return string
      */
@@ -106,7 +106,8 @@ class ViewController extends Controller
      */
     public function jsonExample()
     {
-        Config::common('HEADER', 'Content-type:application/json;charset=utf-8');
+//        该头部可以放在 入口 index.php
+        header('Content-type: application/json');
         $data = ['name' => 'aaphp', 'email' => '1368761119@qq.com'];
         return $data;
     }

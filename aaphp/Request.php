@@ -52,6 +52,8 @@ class Request
         }
 
         $this->request = array_merge($this->post, $this->get);
+        $jsonArray = $this->getJson();
+        $this->request = array_merge($this->request, $jsonArray);
     }
 
     /**
@@ -118,6 +120,15 @@ class Request
     public function getAction()
     {
         return $this->action;
+    }
+
+    /**
+     * 获取CONTENT_TYPE
+     * @return string
+     */
+    public function getContentType()
+    {
+        return isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : '';
     }
 
     /**
@@ -204,7 +215,7 @@ class Request
         if ($key && !isset($this->post[$key])) {
             return $default;
         }
-        return $this->request;
+        return $this->post;
     }
 
     /**
@@ -227,7 +238,7 @@ class Request
     }
 
     /**
-     * pathinfo的方式解析路由，定义项目组，控制器，方法名称，并赋值给$_GET
+     * pathInfo的方式解析路由，定义项目组，控制器，方法名称，并赋值给$_GET
      * @param $pathInfo [解析字符串，如：'Test/index' ]
      */
     private function analyticParameter($pathInfo)
@@ -277,5 +288,26 @@ class Request
                 $this->get[$value] = isset($params[$key + 1]) ? $params[$key + 1] : '';
             }
         }
+    }
+
+    /**
+     * 获取json格式数据，请求header头必须是 header('Content-type: application/json');才能接收到
+     */
+    private function getJson()
+    {
+        if (!stripos($this->getContentType(),'json')) {
+            return [];
+        }
+        $jsonString = file_get_contents("php://input");
+        $array = json_decode($jsonString, true);
+        if(!is_array($array)){
+            $array = json_decode($array, true);
+        }
+
+        if ($this->isPost()) {
+//            保存到post数组
+            $this->post = array_merge($this->post, $array);
+        }
+        return $array;
     }
 }

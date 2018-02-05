@@ -61,4 +61,27 @@ class RequestController extends Controller
         var_dump($request->get());
         echo '获取单个请求参数age：' . $request->get('age');
     }
+
+    /**
+     * 获取json格式参数，请求header头必须是 header('Content-type: application/json');才能接收到
+     */
+    public function json()
+    {
+        $request = Request::instance();
+        if(!$request->isPost()){
+//            不是post请求，载入视图模版
+            return $this->fetch();
+        }
+
+        $data = [
+            'status'=>1,
+            'message'=>"服务器已接收到json数据",
+//            获取全部
+            'data'=>$request->request(),
+//            只获取age
+            'age'=>$request->request('age'),
+            'time'=>date('Y-m-d H:i:s',time()),
+        ];
+        return $data;
+    }
 }

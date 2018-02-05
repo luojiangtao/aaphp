@@ -76,7 +76,6 @@ class View
         }
 
         if (!is_file($viewPath)) {
-            var_dump($viewPath);
             Error::halt('模版文件不存在：' . $viewPath);
         }
 
