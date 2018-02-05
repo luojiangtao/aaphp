@@ -49,6 +49,28 @@ class ModelController extends Controller
     }
 
     /**
+     * 查询一条数据
+     */
+    public function selectOne()
+    {
+        $model = new User();
+        $result = $model->where(['id', '=', 10])->selectOne();
+        echo "获取id等于10的用户：<br/>";
+        var_dump($result);
+    }
+
+    /**
+     * 删除
+     */
+    public function delete()
+    {
+        $model = new User();
+        $rowCount = $model->where(['id', '>', 35])->delete();
+        echo "删除id大于35的用户：<br/>";
+        var_dump($rowCount);
+    }
+
+    /**
      * 查询结果条数限制
      */
     public function limit()
@@ -146,17 +168,6 @@ class ModelController extends Controller
     }
 
     /**
-     * 删除
-     */
-    public function delete()
-    {
-        $model = new User();
-        $rowCount = $model->where(['id', '>', 35])->delete();
-        echo "删除id大于35的用户：<br/>";
-        var_dump($rowCount);
-    }
-
-    /**
      * 分组
      */
     public function group()
@@ -229,17 +240,6 @@ class ModelController extends Controller
         $model = new User();
         $result = $model->where(['id', '=', 10])->getField('username');
         echo "获取id等于10的用户名称：{$result}<br/>";
-    }
-
-    /**
-     * 查询一条数据
-     */
-    public function selectOne()
-    {
-        $model = new User();
-        $result = $model->where(['id', '=', 10])->selectOne();
-        echo "获取id等于10的用户：<br/>";
-        var_dump($result);
     }
 
     /**
