@@ -6,8 +6,4 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'luojiangtao\\' => array($vendorDir . '/luojiangtao/page/src', $vendorDir . '/luojiangtao/upload/src'),
-    'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
-    'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
-    'Gregwar\\' => array($vendorDir . '/gregwar/captcha/src/Gregwar'),
 );

@@ -2,7 +2,7 @@
     "name": "luojiangtao/aaphp",
     "description": "php framework",
     "keywords": ["aaphp", "framework", "php", "luojiangtao"],
-    "homepage": "http://www.aaphp.net/",
+    "homepage": "http://aaphp.net/",
     "type": "project",
     "license": "Apache-2.0",
     "authors": [
